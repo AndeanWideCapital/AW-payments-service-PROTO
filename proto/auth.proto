@@ -8,8 +8,8 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  optional string access_token = 1;
-  optional string refresh_token = 2;
+  string access_token = 1;
+  string refresh_token = 2;
 }
 
 message RefreshTokenRequest {
@@ -21,7 +21,7 @@ message RefreshTokenRequest {
 }
 
 message RefreshTokenResponse {
-  optional string access_token = 1;
+  string access_token = 1;
 }
 
 service AuthService {
