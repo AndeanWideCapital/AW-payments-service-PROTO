@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package users;
+
+message Query {
+  optional string search = 1;
+  optional string username = 2;
+  optional string email = 3;
+  optional string role = 4;
+  optional bool active = 5;
+  optional int32 skip = 6;
+  optional int32 limit = 7;
+}
+
+message User {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  repeated string roles = 4;
+  bool isActive = 5;
+  string createdAt = 6;
+  string updatedAt = 7;
+}
+
+message UserList {
+  repeated User data = 1;
+  int32 total = 2;
+  int32 skip = 3;
+  int32 limit = 4;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message UpdatePasswordRequest {
+  string id = 1;
+  string oldPassword = 2;
+  string newPassword = 3;
+}
+
+message UpdatePasswordResponse {
+  User user = 1;
+}
+
+message DeactivateUserResponse {
+  User user = 1;
+}
+
+message ActivateUserResponse {
+  User user = 1;
+}
+
+message SetPasswordRequest {
+  string id = 1;
+  string password = 2;
+}
+
+message SetPasswordResponse {
+  User user = 1;
+}
+
+message GenerateClientSecretResponse {
+  string clientSecret = 1;
+}
+
+message ClientIdResponse {
+  string clientId = 1;
+}
+
+service UserService {
+  rpc GetUsers(Query) returns (UserList);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc DeactivateUser(GetUserRequest) returns (DeactivateUserResponse);
+  rpc ActivateUser(GetUserRequest) returns (ActivateUserResponse);
+  rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse);
+  rpc SetPassword(SetPasswordRequest) returns (SetPasswordResponse);
+  rpc GenerateClientSecret(GetUserRequest) returns (GenerateClientSecretResponse);
+  rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
+}
