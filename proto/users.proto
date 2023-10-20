@@ -77,6 +77,10 @@ message RegisteRefreshTokenRequest {
   string refreshToken = 2;
 }
 
+message RevokeRefreshTokenRequest {
+  string id = 1;
+}
+
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (UserInstance);
@@ -87,6 +91,6 @@ service UserService {
   rpc GenerateClientSecret(GetUserRequest) returns (GenerateClientSecretResponse);
   rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
   rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
-  rpc RevokeRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
+  rpc RevokeRefreshToken(RevokeRefreshTokenRequest) returns (UserInstance);
   rpc GetUserWithSecrets(GetUserRequest) returns (UserInstanceWithSecrets);
 }
