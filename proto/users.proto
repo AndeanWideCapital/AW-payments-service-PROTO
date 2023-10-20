@@ -51,16 +51,6 @@ message GetUserResponse {
   UserInstance user = 1;
 }
 
-message UpdatePasswordRequest {
-  string id = 1;
-  string oldPassword = 2;
-  string newPassword = 3;
-}
-
-message UpdatePasswordResponse {
-  UserInstance user = 1;
-}
-
 message DeactivateUserResponse {
   UserInstance user = 1;
 }
@@ -86,14 +76,24 @@ message ClientIdResponse {
   string clientId = 1;
 }
 
+message RefreshTokenRequest {
+  string id = 1;
+  string refreshToken = 2;
+}
+
+message RefreshTokenResponse {
+  optional UserInstance user = 1;
+}
+
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc DeactivateUser(GetUserRequest) returns (DeactivateUserResponse);
   rpc ActivateUser(GetUserRequest) returns (ActivateUserResponse);
-  rpc UpdatePassword(UpdatePasswordRequest) returns (UpdatePasswordResponse);
   rpc SetPassword(SetPasswordRequest) returns (SetPasswordResponse);
   rpc GenerateClientSecret(GetUserRequest) returns (GenerateClientSecretResponse);
   rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
+  rpc RegisterRefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc RevokeRefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
 }
