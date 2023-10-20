@@ -22,6 +22,22 @@ message UserInstance {
   string updatedAt = 7;
 }
 
+message UserInstanceWithSecrets {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  repeated string roles = 4;
+  bool isActive = 5;
+  string password = 6;
+  string emailVerifiedAt = 7;
+  string clientId = 8;
+  string clientSecret = 9;
+  string refreshToken = 10;
+  string passwordRecoveryToken = 11;
+  string createdAt = 12;
+  string updatedAt = 13;
+}
+
 message UserList {
   repeated UserInstance data = 1;
   int32 count = 2;
@@ -72,4 +88,5 @@ service UserService {
   rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
   rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
   rpc RevokeRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
+  rpc GetUserWithSecrets(GetUserRequest) returns (UserInstanceWithSecrets);
 }
