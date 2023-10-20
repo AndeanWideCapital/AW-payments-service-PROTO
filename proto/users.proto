@@ -41,7 +41,10 @@ message CreateUserResponse {
 }
 
 message GetUserRequest {
-  string id = 1;
+  optional string id = 1;
+  optional string username = 2;
+  optional string email = 3;
+  optional string clientId = 4;
 }
 
 message GetUserResponse {
