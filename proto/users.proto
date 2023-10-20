@@ -36,10 +36,6 @@ message CreateUserRequest {
   optional string role = 4;
 }
 
-message CreateUserResponse {
-  UserInstance user = 1;
-}
-
 message GetUserRequest {
   optional string id = 1;
   optional string username = 2;
@@ -47,25 +43,9 @@ message GetUserRequest {
   optional string clientId = 4;
 }
 
-message GetUserResponse {
-  UserInstance user = 1;
-}
-
-message DeactivateUserResponse {
-  UserInstance user = 1;
-}
-
-message ActivateUserResponse {
-  UserInstance user = 1;
-}
-
 message SetPasswordRequest {
   string id = 1;
   string password = 2;
-}
-
-message SetPasswordResponse {
-  UserInstance user = 1;
 }
 
 message GenerateClientSecretResponse {
@@ -81,19 +61,15 @@ message RegisteRefreshTokenRequest {
   string refreshToken = 2;
 }
 
-message RegisterRefreshTokenResponse {
-  optional UserInstance user = 1;
-}
-
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
-  rpc DeactivateUser(GetUserRequest) returns (DeactivateUserResponse);
-  rpc ActivateUser(GetUserRequest) returns (ActivateUserResponse);
-  rpc SetPassword(SetPasswordRequest) returns (SetPasswordResponse);
+  rpc CreateUser(CreateUserRequest) returns (UserInstance);
+  rpc GetUser(GetUserRequest) returns (UserInstance);
+  rpc DeactivateUser(GetUserRequest) returns (UserInstance);
+  rpc ActivateUser(GetUserRequest) returns (UserInstance);
+  rpc SetPassword(SetPasswordRequest) returns (UserInstance);
   rpc GenerateClientSecret(GetUserRequest) returns (GenerateClientSecretResponse);
   rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
-  rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (RegisterRefreshTokenResponse);
-  rpc RevokeRefreshToken(RegisteRefreshTokenRequest) returns (RegisterRefreshTokenResponse);
+  rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
+  rpc RevokeRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
 }
