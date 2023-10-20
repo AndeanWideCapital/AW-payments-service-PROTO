@@ -24,7 +24,7 @@ message UserInstance {
 
 message UserList {
   repeated UserInstance data = 1;
-  int32 total = 2;
+  int32 count = 2;
   int32 skip = 3;
   int32 limit = 4;
 }
