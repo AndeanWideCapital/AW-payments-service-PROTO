@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package users;
 
-message Query {
+message UsersQuery {
   optional string search = 1;
   optional string username = 2;
   optional string email = 3;
@@ -83,7 +83,7 @@ message ClientIdResponse {
 }
 
 service UserService {
-  rpc GetUsers(Query) returns (UserList);
+  rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc DeactivateUser(GetUserRequest) returns (DeactivateUserResponse);
