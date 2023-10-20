@@ -76,12 +76,12 @@ message ClientIdResponse {
   string clientId = 1;
 }
 
-message RefreshTokenRequest {
+message RegisteRefreshTokenRequest {
   string id = 1;
   string refreshToken = 2;
 }
 
-message RefreshTokenResponse {
+message RegisterRefreshTokenResponse {
   optional UserInstance user = 1;
 }
 
@@ -94,6 +94,6 @@ service UserService {
   rpc SetPassword(SetPasswordRequest) returns (SetPasswordResponse);
   rpc GenerateClientSecret(GetUserRequest) returns (GenerateClientSecretResponse);
   rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
-  rpc RegisterRefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-  rpc RevokeRefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (RegisterRefreshTokenResponse);
+  rpc RevokeRefreshToken(RegisteRefreshTokenRequest) returns (RegisterRefreshTokenResponse);
 }
