@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
 package authentication;
 
 message LoginRequest {
@@ -17,14 +18,30 @@ message RefreshTokenRequest {
   string username = 2;
   string email = 3;
   repeated string roles = 4;
-  string scope = 5;
+  string emailVerifiedAt = 5;
+  string scope = 6;
 }
 
 message RefreshTokenResponse {
   string access_token = 1;
 }
 
+message LogoutResponse {
+  string message = 1;
+}
+
+message GenerateAccessTokenRequest {
+  string client_id = 1;
+  string client_secret = 2;
+}
+
+message GenerateAccessTokenResponse {
+  string access_token = 1;
+}
+
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
+  rpc GenerateAccessToken(GenerateAccessTokenRequest) returns (GenerateAccessTokenResponse);
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
 }
