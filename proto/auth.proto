@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
 package authentication;
 
 message LoginRequest {
@@ -43,5 +42,5 @@ service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc GenerateAccessToken(GenerateAccessTokenRequest) returns (GenerateAccessTokenResponse);
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-  rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
+  rpc Logout(RefreshTokenRequest) returns (LogoutResponse);
 }
