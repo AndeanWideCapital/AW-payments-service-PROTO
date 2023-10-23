@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+package wallets;
+
+message GeneratePhraseResponse {
+  string mnemonicPhrase = 1;
+}
+
+message RegisterMnemonicPhraseRequest {
+  string userId = 1;
+  string mnemonicPhrase = 2;
+}
+
+message RegisterMnemonicPhraseResponse {
+  string userId = 1;
+  string mnemonicPhrase = 2;
+  string createdAt = 3;
+  string updatedAt = 4;
+}
+
+message MnemonicPhrase {
+  string id = 1;
+  string userId = 2;
+  optional string mnemonicPhrase = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message GetMnemonicPhraseListRequest {
+  string userId = 1;
+  int32 skip = 2;
+  int32 limit = 3;
+}
+
+
+message GetMnenomicPhraseRequest {
+  string id = 1;
+}
+
+message GetMnemonicPhraseListResponse {
+  repeated MnemonicPhrase data = 1;
+  int32 total = 2;
+  int32 skip = 3;
+  int32 limit = 4;
+}
+
+service WalletsService {
+  rpc GenerateMnemonicPhrase(google.protobuf.Empty) returns (GeneratePhraseResponse) {}
+  rpc RegisterMnemonicPhrase(RegisterMnemonicPhraseRequest) returns (RegisterMnemonicPhraseResponse) {}
+  rpc GetMnemonicPhraseList(GetMnemonicPhraseListRequest) returns (GetMnemonicPhraseListResponse) {}
+  rpc GetMnemonicPhrase(GetMnenomicPhraseRequest) returns (MnemonicPhrase) {}
+}
