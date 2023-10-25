@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
 package users;
 
 message UsersQuery {
@@ -93,4 +94,5 @@ service UserService {
   rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
   rpc RevokeRefreshToken(RevokeRefreshTokenRequest) returns (UserInstance);
   rpc GetUserWithSecrets(GetUserRequest) returns (UserInstanceWithSecrets);
+  rpc SeedAdminUser(google.protobuf.Empty) returns (UserInstance);
 }
