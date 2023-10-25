@@ -49,4 +49,5 @@ service MnemonicService {
   rpc RegisterMnemonicPhrase(RegisterMnemonicPhraseRequest) returns (RegisterMnemonicPhraseResponse) {}
   rpc GetMnemonicPhraseList(GetMnemonicPhraseListRequest) returns (GetMnemonicPhraseListResponse) {}
   rpc GetMnemonicPhrase(GetMnenomicPhraseRequest) returns (MnemonicPhrase) {}
+  rpc GetLatestMnemonicPhrase(google.protobuf.Empty) returns (MnemonicPhrase) {}
 }
