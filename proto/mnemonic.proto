@@ -44,10 +44,15 @@ message GetMnemonicPhraseListResponse {
   int32 limit = 4;
 }
 
+message SeedMnemonicPhraseRequest {
+  string userId = 1;
+}
+
 service MnemonicService {
   rpc GenerateMnemonicPhrase(google.protobuf.Empty) returns (GeneratePhraseResponse) {}
   rpc RegisterMnemonicPhrase(RegisterMnemonicPhraseRequest) returns (RegisterMnemonicPhraseResponse) {}
   rpc GetMnemonicPhraseList(GetMnemonicPhraseListRequest) returns (GetMnemonicPhraseListResponse) {}
   rpc GetMnemonicPhrase(GetMnenomicPhraseRequest) returns (MnemonicPhrase) {}
   rpc GetLatestMnemonicPhrase(google.protobuf.Empty) returns (MnemonicPhrase) {}
+  rpc SeedMnemonicPhrase(SeedMnemonicPhraseRequest) returns (RegisterMnemonicPhraseResponse) {}
 }
