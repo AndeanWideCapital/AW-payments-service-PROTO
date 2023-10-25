@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
-package wallets;
+package mnemonics;
 
 message GeneratePhraseResponse {
   string mnemonicPhrase = 1;
@@ -33,7 +33,6 @@ message GetMnemonicPhraseListRequest {
   int32 limit = 3;
 }
 
-
 message GetMnenomicPhraseRequest {
   string id = 1;
 }
@@ -45,7 +44,7 @@ message GetMnemonicPhraseListResponse {
   int32 limit = 4;
 }
 
-service WalletsService {
+service MnemonicService {
   rpc GenerateMnemonicPhrase(google.protobuf.Empty) returns (GeneratePhraseResponse) {}
   rpc RegisterMnemonicPhrase(RegisterMnemonicPhraseRequest) returns (RegisterMnemonicPhraseResponse) {}
   rpc GetMnemonicPhraseList(GetMnemonicPhraseListRequest) returns (GetMnemonicPhraseListResponse) {}
