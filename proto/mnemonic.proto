@@ -13,10 +13,11 @@ message RegisterMnemonicPhraseRequest {
 }
 
 message RegisterMnemonicPhraseResponse {
-  string userId = 1;
-  string mnemonicPhrase = 2;
-  string createdAt = 3;
-  string updatedAt = 4;
+  string id = 1;
+  string userId = 2;
+  string mnemonicPhrase = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
 }
 
 message MnemonicPhrase {
