@@ -13,14 +13,21 @@ message UsersQuery {
   optional int32 limit = 7;
 }
 
+message Wallets {
+  string id = 1;
+  string network = 2;
+  string address = 3;
+}
+
 message UserInstance {
   string id = 1;
   string username = 2;
   string email = 3;
   repeated string roles = 4;
   bool isActive = 5;
-  string createdAt = 6;
-  string updatedAt = 7;
+  repeated Wallets wallets = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
 }
 
 message UserInstanceWithSecrets {
