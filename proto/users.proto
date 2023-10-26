@@ -42,8 +42,9 @@ message UserInstanceWithSecrets {
   string clientSecret = 9;
   string refreshToken = 10;
   string passwordRecoveryToken = 11;
-  string createdAt = 12;
-  string updatedAt = 13;
+  repeated Wallets wallets = 12;
+  string createdAt = 13;
+  string updatedAt = 14;
 }
 
 message UserList {
