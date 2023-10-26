@@ -12,13 +12,20 @@ message LoginResponse {
   string refresh_token = 2;
 }
 
+message Wallets {
+  string id = 1;
+  string network = 2;
+  string address = 3;
+}
+
 message RefreshTokenRequest {
   string id = 1;
   string username = 2;
   string email = 3;
   repeated string roles = 4;
-  string emailVerifiedAt = 5;
-  string scope = 6;
+  repeated Wallets wallets = 5;
+  string emailVerifiedAt = 6;
+  string scope = 7;
 }
 
 message RefreshTokenResponse {
