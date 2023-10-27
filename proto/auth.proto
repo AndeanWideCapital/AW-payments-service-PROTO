@@ -27,9 +27,13 @@ message GenerateAccessTokenRequest {
   string client_secret = 2;
 }
 
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc GenerateAccessToken(GenerateAccessTokenRequest) returns (AccessTokenResponse);
-  rpc RefreshToken(commons.AuthUserInstance) returns (AccessTokenResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (AccessTokenResponse);
   rpc Logout(commons.AuthUserInstance) returns (LogoutResponse);
 }
