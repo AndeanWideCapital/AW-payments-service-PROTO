@@ -14,17 +14,7 @@ message LoginResponse {
   string refresh_token = 2;
 }
 
-message RefreshTokenRequest {
-  string id = 1;
-  string username = 2;
-  string email = 3;
-  repeated string roles = 4;
-  repeated commons.Wallets wallets = 5;
-  string emailVerifiedAt = 6;
-  string scope = 7;
-}
-
-message RefreshTokenResponse {
+message AccessTokenResponse {
   string access_token = 1;
 }
 
@@ -37,13 +27,9 @@ message GenerateAccessTokenRequest {
   string client_secret = 2;
 }
 
-message GenerateAccessTokenResponse {
-  string access_token = 1;
-}
-
 service AuthService {
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc GenerateAccessToken(GenerateAccessTokenRequest) returns (GenerateAccessTokenResponse);
-  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
-  rpc Logout(RefreshTokenRequest) returns (LogoutResponse);
+  rpc GenerateAccessToken(GenerateAccessTokenRequest) returns (AccessTokenResponse);
+  rpc RefreshToken(commons.AuthUserInstance) returns (AccessTokenResponse);
+  rpc Logout(commons.AuthUserInstance) returns (LogoutResponse);
 }

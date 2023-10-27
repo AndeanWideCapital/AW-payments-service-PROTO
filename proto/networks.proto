@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package networks;
+
+message CreateNetworkRequest {
+  string name = 1;
+  optional string description = 2;
+  string symbol = 3;
+}
+
+message NetworkAssetInstance {
+  string name = 1;
+  string symbol = 2;
+  string contractAddress = 3;
+  int32 decimals = 4; 
+  string abi = 5;
+  bytes contract = 6;
+}
+
+message NetworkInstance {
+  string name = 1;
+  optional string description = 2;
+  string symbol = 3;
+  repeated NetworkAssetInstance assets = 4;
+  bool isActive = 5;
+}
+
+message GetNetworksRequest {
+  optional string name = 1;
+  optional bool active = 2;
+  optional int32 skip = 3;
+  optional int32 limit = 4;
+}
+
+message GetNetworksResponse {
+  repeated NetworkInstance data = 1;
+  int32 count = 2;
+  int32 skip = 3;
+  int32 limit = 4;
+}
+
+message GetNetworkRequest {
+  string id = 1;
+}
+
+message CreateAssetNetworkRequest {
+  string networkId = 1;
+  string name = 2;
+  string symbol = 3;
+  string contractAddress = 4;
+  int32 decimals = 5; 
+  string abi = 6;
+  bytes contract = 7;
+}
+
+service NetworksService {
+  rpc GetNetworks(GetNetworksRequest) returns (GetNetworksResponse);
+  rpc CreateNetwork(CreateNetworkRequest) returns (NetworkInstance);
+  rpc GetNetwork(GetNetworkRequest) returns (NetworkInstance);
+  rpc ActivateNetwork(GetNetworkRequest) returns (NetworkInstance);
+  rpc DeactivateNetwork(GetNetworkRequest) returns (NetworkInstance);
+  rpc CreateAssetNetwork(CreateAssetNetworkRequest) returns (NetworkInstance);
+}

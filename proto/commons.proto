@@ -7,3 +7,13 @@ message Wallets {
   string network = 2;
   string address = 3;
 }
+
+message AuthUserInstance {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  repeated string roles = 4;
+  repeated Wallets wallets = 5;
+  string emailVerifiedAt = 6;
+  string scope = 7;
+}
