@@ -10,12 +10,12 @@ message LoginRequest {
 }
 
 message LoginResponse {
-  string access_token = 1;
-  string refresh_token = 2;
+  string accessToken = 1;
+  string refreshToken = 2;
 }
 
 message AccessTokenResponse {
-  string access_token = 1;
+  string accessToken = 1;
 }
 
 message LogoutResponse {
@@ -23,12 +23,12 @@ message LogoutResponse {
 }
 
 message GenerateAccessTokenRequest {
-  string client_id = 1;
+  string clientId = 1;
   string client_secret = 2;
 }
 
 message RefreshTokenRequest {
-  string refresh_token = 1;
+  string refreshIoken = 1;
 }
 
 service AuthService {
