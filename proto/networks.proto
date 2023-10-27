@@ -9,12 +9,13 @@ message CreateNetworkRequest {
 }
 
 message NetworkAssetInstance {
-  string name = 1;
-  string symbol = 2;
-  string contractAddress = 3;
-  int32 decimals = 4; 
-  string abi = 5;
-  bytes contract = 6;
+  string id = 1;
+  string name = 2;
+  string symbol = 3;
+  string contractAddress = 4;
+  int32 decimals = 5; 
+  string abi = 6;
+  bytes contract = 7;
 }
 
 message NetworkInstance {
