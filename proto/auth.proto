@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "commons.proto";
+
 package authentication;
 
 message LoginRequest {
@@ -12,18 +14,12 @@ message LoginResponse {
   string refresh_token = 2;
 }
 
-message AuthWallets {
-  string id = 1;
-  string network = 2;
-  string address = 3;
-}
-
 message RefreshTokenRequest {
   string id = 1;
   string username = 2;
   string email = 3;
   repeated string roles = 4;
-  repeated AuthWallets wallets = 5;
+  repeated commons.Wallets wallets = 5;
   string emailVerifiedAt = 6;
   string scope = 7;
 }

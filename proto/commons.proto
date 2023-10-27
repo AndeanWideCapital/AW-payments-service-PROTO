@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package commons;
+
+message Wallets {
+  string id = 1;
+  string network = 2;
+  string address = 3;
+}
