@@ -3,7 +3,6 @@ syntax = "proto3";
 package networks;
 
 message CreateNetworkRequest {
-  string id = 1;
   string name = 2;
   optional string description = 3;
   string symbol = 4;
