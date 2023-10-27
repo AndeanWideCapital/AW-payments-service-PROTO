@@ -28,7 +28,7 @@ message GenerateAccessTokenRequest {
 }
 
 message RefreshTokenRequest {
-  string refreshIoken = 1;
+  string refreshToken = 1;
 }
 
 service AuthService {
