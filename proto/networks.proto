@@ -9,12 +9,13 @@ message CreateNetworkRequest {
 }
 
 message NetworkAssetInstance {
-  string name = 1;
-  string symbol = 2;
-  string contractAddress = 3;
-  int32 decimals = 4; 
-  string abi = 5;
-  bytes contract = 6;
+  string fullname = 1;
+  string name = 2;
+  string originAddress = 3;
+  string abi = 4;
+  string originEnergyLimit = 5;
+  string contractAddress = 6;
+  int32 decimals = 7; 
 }
 
 message NetworkInstance {
@@ -46,12 +47,13 @@ message GetNetworkRequest {
 
 message CreateAssetNetworkRequest {
   string networkId = 1;
-  string name = 2;
-  string symbol = 3;
-  string contractAddress = 4;
-  int32 decimals = 5; 
-  string abi = 6;
-  bytes contract = 7;
+  string fullname = 2;
+  string contractAddress = 3;
+}
+
+message DeleteAssetNetworkRequest {
+  string networkId = 1;
+  string assetId = 2;
 }
 
 service NetworksService {
@@ -61,4 +63,5 @@ service NetworksService {
   rpc ActivateNetwork(GetNetworkRequest) returns (NetworkInstance);
   rpc DeactivateNetwork(GetNetworkRequest) returns (NetworkInstance);
   rpc CreateAssetNetwork(CreateAssetNetworkRequest) returns (NetworkInstance);
+  rpc DeleteAssetNetwork(DeleteAssetNetworkRequest) returns (NetworkInstance);
 }
