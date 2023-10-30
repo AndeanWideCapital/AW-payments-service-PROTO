@@ -56,6 +56,11 @@ message DeleteAssetNetworkRequest {
   string contractAddress = 2;
 }
 
+message GetAssetNetworkDetailsRequest {
+  string networkId = 1;
+  string contractAddress = 2;
+}
+
 service NetworksService {
   rpc GetNetworks(GetNetworksRequest) returns (GetNetworksResponse);
   rpc CreateNetwork(CreateNetworkRequest) returns (NetworkInstance);
@@ -64,4 +69,5 @@ service NetworksService {
   rpc DeactivateNetwork(GetNetworkRequest) returns (NetworkInstance);
   rpc CreateAssetNetwork(CreateAssetNetworkRequest) returns (NetworkInstance);
   rpc DeleteAssetNetwork(DeleteAssetNetworkRequest) returns (NetworkInstance);
+  rpc GetAssetNetworkDetails(GetAssetNetworkDetailsRequest) returns (NetworkAssetInstance);
 }
