@@ -53,7 +53,7 @@ message CreateAssetNetworkRequest {
 
 message DeleteAssetNetworkRequest {
   string networkId = 1;
-  string assetId = 2;
+  string contractAddress = 2;
 }
 
 service NetworksService {
