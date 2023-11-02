@@ -2,9 +2,36 @@ syntax = "proto3";
 
 package commons;
 
-message Wallets {
+message NetworkInstance {
   string id = 1;
-  string network = 2;
+  string name = 2;
+  optional string description = 3;
+  string symbol = 4;
+  repeated NetworkAssetInstance assets = 5;
+  bool isActive = 6;
+}
+
+message NetworkAssetInstance {
+  string fullname = 1;
+  string name = 2;
+  string originAddress = 3;
+  string abi = 4;
+  string originEnergyLimit = 5;
+  string contractAddress = 6;
+  int32 decimals = 7; 
+}
+
+message MnemonicPhraseInstance {
+  string id = 1;
+  string userId = 2;
+  optional string mnemonicPhrase = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}
+
+message WalletInstance {
+  string id = 1;
+  string NetworkInstance = 2;
   string address = 3;
 }
 
@@ -13,7 +40,7 @@ message AuthUserInstance {
   string username = 2;
   string email = 3;
   repeated string roles = 4;
-  repeated Wallets wallets = 5;
+  repeated WalletInstance wallets = 5;
   string emailVerifiedAt = 6;
   string scope = 7;
 }

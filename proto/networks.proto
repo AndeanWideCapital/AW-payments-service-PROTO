@@ -2,30 +2,14 @@ syntax = "proto3";
 
 package networks;
 
+import "commons.proto";
+
 message CreateNetworkRequest {
   string name = 2;
   optional string description = 3;
   string symbol = 4;
 }
 
-message NetworkAssetInstance {
-  string fullname = 1;
-  string name = 2;
-  string originAddress = 3;
-  string abi = 4;
-  string originEnergyLimit = 5;
-  string contractAddress = 6;
-  int32 decimals = 7; 
-}
-
-message NetworkInstance {
-  string id = 1;
-  string name = 2;
-  optional string description = 3;
-  string symbol = 4;
-  repeated NetworkAssetInstance assets = 5;
-  bool isActive = 6;
-}
 
 message GetNetworksRequest {
   optional string name = 1;
@@ -35,7 +19,7 @@ message GetNetworksRequest {
 }
 
 message GetNetworksResponse {
-  repeated NetworkInstance data = 1;
+  repeated commons.NetworkInstance data = 1;
   int32 count = 2;
   int32 skip = 3;
   int32 limit = 4;
@@ -61,13 +45,20 @@ message GetAssetNetworkDetailsRequest {
   string contractAddress = 2;
 }
 
+message SearchNetworkRequest {
+  optional string id = 1;
+  optional string name = 2;
+  optional string symbol = 3;
+}
+
 service NetworksService {
   rpc GetNetworks(GetNetworksRequest) returns (GetNetworksResponse);
-  rpc CreateNetwork(CreateNetworkRequest) returns (NetworkInstance);
-  rpc GetNetwork(GetNetworkRequest) returns (NetworkInstance);
-  rpc ActivateNetwork(GetNetworkRequest) returns (NetworkInstance);
-  rpc DeactivateNetwork(GetNetworkRequest) returns (NetworkInstance);
-  rpc CreateAssetNetwork(CreateAssetNetworkRequest) returns (NetworkInstance);
-  rpc DeleteAssetNetwork(DeleteAssetNetworkRequest) returns (NetworkInstance);
-  rpc GetAssetNetworkDetails(GetAssetNetworkDetailsRequest) returns (NetworkAssetInstance);
+  rpc CreateNetwork(CreateNetworkRequest) returns (commons.NetworkInstance);
+  rpc GetNetwork(GetNetworkRequest) returns (commons.NetworkInstance);
+  rpc ActivateNetwork(GetNetworkRequest) returns (commons.NetworkInstance);
+  rpc DeactivateNetwork(GetNetworkRequest) returns (commons.NetworkInstance);
+  rpc CreateAssetNetwork(CreateAssetNetworkRequest) returns (commons.NetworkInstance);
+  rpc DeleteAssetNetwork(DeleteAssetNetworkRequest) returns (commons.NetworkInstance);
+  rpc GetAssetNetworkDetails(GetAssetNetworkDetailsRequest) returns (commons.NetworkAssetInstance);
+  rpc SearchNetwork(SearchNetworkRequest) returns (commons.NetworkInstance);
 }

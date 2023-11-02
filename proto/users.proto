@@ -1,9 +1,9 @@
 syntax = "proto3";
 
+package users;
+
 import "commons.proto";
 import "google/protobuf/empty.proto";
-
-package users;
 
 message UsersQuery {
   optional string search = 1;
@@ -21,7 +21,7 @@ message UserInstance {
   string email = 3;
   repeated string roles = 4;
   bool isActive = 5;
-  repeated commons.Wallets wallets = 6;
+  repeated commons.WalletInstance wallets = 6;
   string createdAt = 7;
   string updatedAt = 8;
 }
@@ -38,7 +38,7 @@ message UserInstanceWithSecrets {
   string clientSecret = 9;
   string refreshToken = 10;
   string passwordRecoveryToken = 11;
-  repeated commons.Wallets wallets = 12;
+  repeated commons.WalletInstance wallets = 12;
   string createdAt = 13;
   string updatedAt = 14;
 }

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package wallet;
+
+import "google/protobuf/empty.proto";
+
+message CreateWalletRequest {
+  string userId = 1;
+  string mnemonicPhraseId = 2;
+  string networkId = 3;
+}
+
+message GetWalletRequest {
+  optional string id = 1;
+  optional string userId = 2;
+}
+
+message GetWalletResponse {
+  string id = 1;
+  string userId = 2;
+  string address = 3;
+  string publicKey = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+}
+
+message GetWalletsResponse {
+  repeated GetWalletResponse wallets = 1;
+}
+
+message FilterWalletsRequest {
+  optional string userId = 1;
+  optional string networkId = 2;
+  optional string address = 3;
+}
+
+service WalletsService {
+  rpc CreateWallet(CreateWalletRequest) returns (GetWalletRequest);
+  rpc GetWallet(GetWalletRequest) returns (GetWalletRequest);
+  rpc GetWallets(google.protobuf.Empty) returns (GetWalletsResponse);
+  rpc FilterWallets(FilterWalletsRequest) returns (GetWalletsResponse);
+}

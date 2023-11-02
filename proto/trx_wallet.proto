@@ -1,7 +1,8 @@
 syntax = "proto3";
 
-import "google/protobuf/empty.proto";
 package trx_wallets;
+
+import "google/protobuf/empty.proto";
 
 message CreateTronWalletRequest {
   string userId = 1;
