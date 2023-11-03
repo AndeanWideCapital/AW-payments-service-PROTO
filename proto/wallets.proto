@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package wallet;
 
+import "commons.proto";
+
 message CreateWalletRequest {
   string userId = 1;
   string mnemonicPhraseId = 2;
@@ -18,8 +20,9 @@ message GetWalletResponse {
   string userId = 2;
   string address = 3;
   string publicKey = 4;
-  string createdAt = 5;
-  string updatedAt = 6;
+  optional commons.NetworkInstance network = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
 }
 
 message GetInternalMessageWalletResponse {

@@ -10,7 +10,6 @@ message CreateNetworkRequest {
   string symbol = 3;
 }
 
-
 message GetNetworksRequest {
   optional string name = 1;
   optional bool active = 2;
