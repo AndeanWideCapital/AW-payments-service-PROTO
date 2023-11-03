@@ -5,9 +5,9 @@ package networks;
 import "commons.proto";
 
 message CreateNetworkRequest {
-  string name = 2;
-  optional string description = 3;
-  string symbol = 4;
+  string name = 1;
+  optional string description = 2;
+  string symbol = 3;
 }
 
 
