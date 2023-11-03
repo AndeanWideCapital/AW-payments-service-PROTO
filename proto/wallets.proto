@@ -34,7 +34,10 @@ message GetInternalMessageWalletResponse {
 }
 
 message GetWalletsResponse {
-  repeated GetWalletResponse wallets = 1;
+  repeated GetWalletResponse data = 1;
+  int32 count = 2;
+  int32 skip = 3;
+  int32 limit = 4;
 }
 
 message FilterWalletsRequest {
