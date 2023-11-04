@@ -3,6 +3,7 @@ syntax = "proto3";
 package networks;
 
 import "commons.proto";
+import "google/protobuf/empty.proto";
 
 message CreateNetworkRequest {
   string name = 1;
@@ -60,4 +61,5 @@ service NetworksService {
   rpc DeleteAssetNetwork(DeleteAssetNetworkRequest) returns (commons.NetworkInstance);
   rpc GetAssetNetworkDetails(GetAssetNetworkDetailsRequest) returns (commons.NetworkAssetInstance);
   rpc SearchNetwork(SearchNetworkRequest) returns (commons.NetworkInstance);
+  rpc SeedNetworks(google.protobuf.Empty) returns (commons.GeneralMessageResponse);
 }

@@ -70,3 +70,7 @@ message UserInstance {
   string createdAt = 7;
   string updatedAt = 8;
 }
+
+message GeneralMessageResponse {
+  string message = 1;
+}
