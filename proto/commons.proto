@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package commons;
 
+import "google/protobuf/any.proto";
+
 message NetworkInstance {
   string id = 1;
   string name = 2;
@@ -11,11 +13,24 @@ message NetworkInstance {
   bool isActive = 6;
 }
 
+message AbiInstance {
+  message Abi {
+      string type = 1;
+      string stateMutability = 2;
+      repeated google.protobuf.Any inputs = 3;
+  }
+
+  repeated Abi abi = 1;
+  uint32 origin_energy_limit = 2;
+  string contract_address = 3;
+  string code_hash = 4;
+}
+
 message NetworkAssetInstance {
   string fullname = 1;
   string name = 2;
   string originAddress = 3;
-  string abi = 4;
+  string AbiInstance = 4;
   string originEnergyLimit = 5;
   string contractAddress = 6;
   int32 decimals = 7; 
