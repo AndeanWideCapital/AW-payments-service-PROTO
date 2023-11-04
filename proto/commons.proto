@@ -44,3 +44,14 @@ message AuthUserInstance {
   string emailVerifiedAt = 6;
   string scope = 7;
 }
+
+message UserInstance {
+  string id = 1;
+  string username = 2;
+  string email = 3;
+  repeated string roles = 4;
+  bool isActive = 5;
+  repeated commons.WalletInstance wallets = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+}

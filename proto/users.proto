@@ -15,18 +15,7 @@ message UsersQuery {
   optional int32 limit = 7;
 }
 
-message UserInstance {
-  string id = 1;
-  string username = 2;
-  string email = 3;
-  repeated string roles = 4;
-  bool isActive = 5;
-  repeated commons.WalletInstance wallets = 6;
-  string createdAt = 7;
-  string updatedAt = 8;
-}
-
-message UserInstanceWithSecrets {
+message InternalUserInstance {
   string id = 1;
   string username = 2;
   string email = 3;
@@ -44,7 +33,7 @@ message UserInstanceWithSecrets {
 }
 
 message UserList {
-  repeated UserInstance data = 1;
+  repeated commons.UserInstance data = 1;
   int32 count = 2;
   int32 skip = 3;
   int32 limit = 4;
@@ -88,15 +77,15 @@ message RevokeRefreshTokenRequest {
 
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
-  rpc CreateUser(CreateUserRequest) returns (UserInstance);
-  rpc GetUser(GetUserRequest) returns (UserInstance);
-  rpc DeactivateUser(GetUserRequest) returns (UserInstance);
-  rpc ActivateUser(GetUserRequest) returns (UserInstance);
-  rpc SetPassword(SetPasswordRequest) returns (UserInstance);
+  rpc CreateUser(CreateUserRequest) returns (commons.UserInstance);
+  rpc GetUser(GetUserRequest) returns (commons.UserInstance);
+  rpc DeactivateUser(GetUserRequest) returns (commons.UserInstance);
+  rpc ActivateUser(GetUserRequest) returns (commons.UserInstance);
+  rpc SetPassword(SetPasswordRequest) returns (commons.UserInstance);
   rpc GenerateClientSecret(GetUserRequest) returns (GenerateClientSecretResponse);
   rpc GetClientId(GetUserRequest) returns (ClientIdResponse);
-  rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (UserInstance);
-  rpc RevokeRefreshToken(RevokeRefreshTokenRequest) returns (UserInstance);
-  rpc GetUserWithSecrets(GetUserRequest) returns (UserInstanceWithSecrets);
-  rpc SeedAdminUser(google.protobuf.Empty) returns (UserInstance);
+  rpc RegisterRefreshToken(RegisteRefreshTokenRequest) returns (commons.UserInstance);
+  rpc RevokeRefreshToken(RevokeRefreshTokenRequest) returns (commons.UserInstance);
+  rpc GetInternalUserMessage(GetUserRequest) returns (InternalUserInstance);
+  rpc SeedAdminUser(google.protobuf.Empty) returns (commons.UserInstance);
 }
