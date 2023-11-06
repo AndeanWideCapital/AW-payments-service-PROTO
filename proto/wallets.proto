@@ -57,8 +57,8 @@ message QueryWallets {
 }
 
 service WalletsService {
-  rpc CreateWallet(CreateWalletRequest) returns (GetWalletRequest);
-  rpc GetWallet(GetWalletRequest) returns (GetWalletRequest);
+  rpc CreateWallet(CreateWalletRequest) returns (GetWalletResponse);
+  rpc GetWallet(GetWalletRequest) returns (GetWalletResponse);
   rpc GetWallets(QueryWallets) returns (GetWalletsResponse);
   rpc GetInternalMessageWallet(GetWalletRequest) returns (GetInternalMessageWalletResponse);
   rpc FilterWallets(FilterWalletsRequest) returns (GetWalletsResponse);
