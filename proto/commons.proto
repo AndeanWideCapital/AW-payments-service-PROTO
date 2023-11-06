@@ -13,21 +13,24 @@ message NetworkInstance {
 
 message AbiInstance {
   message Inputs {
-    string name = 1;
+    optional bool indexed = 1;
+    string name = 2;
+    string type = 3;
+  }
+
+  message Outputs {
+    optional string name = 1;
     string type = 2;
   }
 
-  message Entrys {
+  message Entry {
       repeated Inputs inputs = 1;
       string stateMutability = 2;
       string type = 3;
+      string name = 4;
   }
 
-  message Abi {
-      repeated Entrys entrys = 1;
-  }
-
-  Abi abi = 1;
+  repeated Entry entries = 1;
   uint32 origin_energy_limit = 2;
   string contract_address = 3;
   string code_hash = 4;
