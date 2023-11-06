@@ -11,39 +11,39 @@ message NetworkInstance {
   bool isActive = 6;
 }
 
-message AbiInstance {
-  message Inputs {
-    optional bool indexed = 1;
-    string name = 2;
-    string type = 3;
+
+message ABIInstance {
+  message Input {
+    string name = 1;
+    string type = 2;
+    bool indexed = 3; // Solo cuando es usado en eventos
   }
 
-  message Outputs {
-    optional string name = 1;
+  message Output {
+    string name = 1; // Opcional, puede no ser utilizado
     string type = 2;
   }
 
   message Entry {
-      repeated Inputs inputs = 1;
-      string stateMutability = 2;
-      string type = 3;
-      string name = 4;
+    string type = 1;
+    string name = 2; // Solo para Eventos y Funciones
+    repeated Input inputs = 3;
+    repeated Output outputs = 4; // Solo para Funciones
+    string stateMutability = 5; // Solo para Constructor y Funciones
   }
 
-  repeated Entry entries = 1;
-  uint32 origin_energy_limit = 2;
-  string contract_address = 3;
-  string code_hash = 4;
+  repeated Entry entrys = 1;
 }
 
 message NetworkAssetInstance {
   string fullname = 1;
   string name = 2;
   string originAddress = 3;
-  AbiInstance abi = 4;
-  string originEnergyLimit = 5;
+  ABIInstance abi = 4;
+  int64 originEnergyLimit = 5;
   string contractAddress = 6;
-  int32 decimals = 7; 
+  string codeHash = 7;
+  string base58Address = 8;
 }
 
 message MnemonicPhraseInstance {
