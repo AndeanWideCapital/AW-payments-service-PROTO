@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package wallet;
 
-import "google/protobuf/timestamp.proto";
 import "commons.proto";
 
 message CreateWalletRequest {
@@ -21,8 +20,8 @@ message GetWalletResponse {
   string userId = 2;
   string address = 3;
   optional commons.NetworkInstance network = 6;
-  google.protobuf.Timestamp createdAt = 7;
-  google.protobuf.Timestamp updatedAt = 8;
+  string createdAt = 7;
+  string updatedAt = 8;
 }
 
 message GetInternalMessageWalletResponse {
