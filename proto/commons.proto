@@ -55,8 +55,8 @@ message MnemonicPhraseInstance {
 
 message WalletInstance {
   string id = 1;
-  string NetworkInstance = 2;
-  string address = 3;
+  string address = 2;
+  optional NetworkInstance network = 3;
 }
 
 message AuthUserInstance {
