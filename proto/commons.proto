@@ -2,48 +2,49 @@ syntax = "proto3";
 
 package commons;
 
+import "google/protobuf/timestamp.proto";
+
 message NetworkInstance {
   string id = 1;
   string name = 2;
   optional string description = 3;
   string symbol = 4;
-  repeated NetworkAssetInstance assets = 5;
-  bool isActive = 6;
-}
-
-
-message ABIInstance {
-  message Input {
-    string name = 1;
-    string type = 2;
-    bool indexed = 3; // Solo cuando es usado en eventos
-  }
-
-  message Output {
-    string name = 1; // Opcional, puede no ser utilizado
-    string type = 2;
-  }
-
-  message Entry {
-    string type = 1;
-    string name = 2; // Solo para Eventos y Funciones
-    repeated Input inputs = 3;
-    repeated Output outputs = 4; // Solo para Funciones
-    string stateMutability = 5; // Solo para Constructor y Funciones
-  }
-
-  repeated Entry entrys = 1;
+  bool isActive = 5;
+  repeated NetworkAssetInstance assets = 6;
 }
 
 message NetworkAssetInstance {
+  message ABIInstance {
+    message Input {
+      string name = 1;
+      string type = 2;
+      bool indexed = 3; // Solo cuando es usado en eventos
+    }
+  
+    message Output {
+      string name = 1; // Opcional, puede no ser utilizado
+      string type = 2;
+    }
+  
+    message Entry {
+      string type = 1;
+      string name = 2; // Solo para Eventos y Funciones
+      repeated Input inputs = 3;
+      repeated Output outputs = 4; // Solo para Funciones
+      string stateMutability = 5; // Solo para Constructor y Funciones
+    }
+  
+    repeated Entry entrys = 1;
+  }
+
   string fullname = 1;
   string name = 2;
-  string originAddress = 3;
-  ABIInstance abi = 4;
-  int64 originEnergyLimit = 5;
-  string contractAddress = 6;
-  string codeHash = 7;
-  string base58Address = 8;
+  optional string originAddress = 3;
+  optional int64 originEnergyLimit = 4;
+  string contractAddress = 5;
+  optional string codeHash = 6;
+  optional string base58Address = 7;
+  optional ABIInstance abi = 8;
 }
 
 message MnemonicPhraseInstance {
@@ -77,8 +78,8 @@ message UserInstance {
   repeated string roles = 4;
   bool isActive = 5;
   repeated commons.WalletInstance wallets = 6;
-  string createdAt = 7;
-  string updatedAt = 8;
+  google.protobuf.Timestamp createdAt = 7;
+  google.protobuf.Timestamp updatedAt = 8;
 }
 
 message GeneralMessageResponse {
