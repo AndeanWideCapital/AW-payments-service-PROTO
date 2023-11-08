@@ -83,5 +83,5 @@ service WalletsService {
   rpc FilterWallets(FilterWalletsRequest) returns (GetWalletsResponse);
   rpc GetBalanceByUser(GetBalanceByUserRequest) returns (BalanceResponse);
   rpc GetBalancesByNetwork(GetBalanceByNetworkRequest) returns (BalanceResponse);
-  rpc GetBalanceByToken(GetBalanceByTokenRequest) returns (BalanceResponse);
+  rpc GetBalanceByToken(GetBalanceByTokenRequest) returns (commons.BalanceInstance);
 }
