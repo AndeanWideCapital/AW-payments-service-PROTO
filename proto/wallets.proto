@@ -33,7 +33,7 @@ message GetInternalMessageWalletResponse {
 }
 
 message GetWalletsResponse {
-  repeated GetWalletResponse data = 1;
+  repeated commons.WalletInstance data = 1;
   int32 count = 2;
   int32 skip = 3;
   int32 limit = 4;
@@ -55,10 +55,33 @@ message QueryWallets {
   optional int32 limit = 7;
 }
 
+message GetBalanceByUserRequest {
+  string userId = 1;
+}
+
+message BalanceResponse {
+  repeated commons.BalanceInstance data = 1;
+}
+
+message GetBalanceByNetworkRequest {
+  string userId = 1;
+  string networkType = 2;
+}
+
+message GetBalanceByTokenRequest {
+  string userId = 1;
+  string networkType = 2;
+  string token = 3;
+}
+
+
 service WalletsService {
   rpc CreateWallet(CreateWalletRequest) returns (commons.WalletInstance);
   rpc GetWallet(GetWalletRequest) returns (GetWalletResponse);
   rpc GetWallets(QueryWallets) returns (GetWalletsResponse);
   rpc GetInternalMessageWallet(GetWalletRequest) returns (GetInternalMessageWalletResponse);
   rpc FilterWallets(FilterWalletsRequest) returns (GetWalletsResponse);
+  rpc GetBalanceByUser(GetBalanceByUserRequest) returns (BalanceResponse);
+  rpc GetBalancesByNetwork(GetBalanceByNetworkRequest) returns (BalanceResponse);
+  rpc GetBalanceByToken(GetBalanceByTokenRequest) returns (BalanceResponse);
 }
