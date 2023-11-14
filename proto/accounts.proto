@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package accounts;
+
+import "commons.proto";
+
+message CreateAccountRequest {
+  message Address {
+    optional string city = 1;
+    optional string country = 2;
+    optional string state = 3;
+    optional string streetLine1 = 4;
+    optional string streetLine2 = 5;
+  }
+
+  string accountNumber = 1;
+  string accountOwnerName = 2;
+  optional Address address = 3;
+  string bankName = 4;
+  string routingNumber = 5;
+}
+
+message GetAccountsRequest {
+  optional string search = 1;
+  optional string userId = 2;
+  optional string city = 3;
+  optional string bankName = 4;
+  optional int32 skip = 5;
+  optional int32 limit = 6;
+}
+
+message GetAccountsResponse {
+  repeated commons.AccountsInstance data = 1;
+  int32 count = 2;
+  int32 skip = 3;
+  int32 limit = 4;
+}
+
+message GetAccountRequest {
+  string id = 1;
+  optional string userId = 2;
+}
+
+service AccountService {
+  rpc CreateAccount(CreateAccountRequest) returns (commons.AccountsInstance);
+  rpc GetAccounts(GetAccountsRequest) returns (GetAccountsResponse);
+  rpc GetAccount(GetAccountRequest) returns (commons.AccountsInstance);
+  rpc ActivateAccount(GetAccountRequest) returns (commons.AccountsInstance);
+  rpc DeactivateAccount(GetAccountRequest) returns (commons.AccountsInstance);
+}

@@ -94,3 +94,25 @@ message BalanceInstance {
   string decimals = 7;
   string rawBalance = 8;
 }
+
+message AccountsInstance {
+  message AddressInstance {
+    optional string city = 1;
+    optional string country = 2;
+    optional string state = 3;
+    optional string streetLine1 = 4;
+    optional string streetLine2 = 5;
+  }
+
+  string id = 1;
+  string userId = 2;
+  string accountNumber = 3;
+  string accountOwnerName = 4;
+  optional AddressInstance address = 5;
+  string bankName = 6;
+  string routingNumber = 7;
+  optional string last4 = 8;
+  bool isActive = 9;
+  optional string createdAt = 10;
+  optional string updatedAt = 11;
+}
