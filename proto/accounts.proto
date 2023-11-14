@@ -13,11 +13,12 @@ message CreateAccountRequest {
     optional string streetLine2 = 5;
   }
 
-  string accountNumber = 1;
-  string accountOwnerName = 2;
-  optional Address address = 3;
-  string bankName = 4;
-  string routingNumber = 5;
+  string userId = 1;
+  string accountNumber = 2;
+  string accountOwnerName = 3;
+  optional Address address = 4;
+  string bankName = 5;
+  string routingNumber = 6;
 }
 
 message GetAccountsRequest {
