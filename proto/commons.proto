@@ -99,9 +99,10 @@ message AccountsInstance {
   message AddressInstance {
     optional string city = 1;
     optional string country = 2;
-    optional string state = 3;
-    optional string streetLine1 = 4;
-    optional string streetLine2 = 5;
+    optional string postalCode = 3;
+    optional string state = 4;
+    optional string streetLine1 = 5;
+    optional string streetLine2 = 6;
   }
 
   string id = 1;
