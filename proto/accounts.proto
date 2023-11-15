@@ -26,9 +26,10 @@ message GetAccountsRequest {
   optional string search = 1;
   optional string userId = 2;
   optional string city = 3;
-  optional string bankName = 4;
-  optional int32 skip = 5;
-  optional int32 limit = 6;
+  optional string country = 4;
+  optional string bankName = 5;
+  optional int32 skip = 6;
+  optional int32 limit = 7;
 }
 
 message GetAccountsResponse {
