@@ -106,14 +106,15 @@ message AccountsInstance {
   }
 
   string id = 1;
-  string userId = 2;
-  string accountNumber = 3;
-  string accountOwnerName = 4;
-  optional AddressInstance address = 5;
-  string bankName = 6;
-  string routingNumber = 7;
-  optional string last4 = 8;
-  bool isActive = 9;
-  optional string createdAt = 10;
-  optional string updatedAt = 11;
+  string bitsoAccountId = 2;
+  string userId = 3;
+  string accountNumber = 4;
+  string accountOwnerName = 5;
+  optional AddressInstance address = 6;
+  string bankName = 7;
+  string routingNumber = 8;
+  optional string last4 = 9;
+  bool isActive = 10;
+  optional string createdAt = 11;
+  optional string updatedAt = 12;
 }
