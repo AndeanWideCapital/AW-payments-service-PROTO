@@ -118,3 +118,10 @@ message AccountsInstance {
   optional string createdAt = 11;
   optional string updatedAt = 12;
 }
+
+message BitsoBankAccountInstance {
+  string id  =1;
+  string bankName = 2;
+  string last4 = 3;
+  string accountOwnerName = 4;
+}

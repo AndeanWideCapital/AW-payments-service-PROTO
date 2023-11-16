@@ -3,6 +3,7 @@ syntax = "proto3";
 package accounts;
 
 import "commons.proto";
+import "google/protobuf/empty.proto";
 
 message CreateAccountRequest {
   message Address {
@@ -44,10 +45,20 @@ message GetAccountRequest {
   optional string userId = 2;
 }
 
+message BitsoBankAccountsResponse {
+  repeated commons.BitsoBankAccountInstance accounts = 1;
+}
+
+message BitsoBankAccountRequest {
+  string id = 1;
+}
+
 service AccountService {
   rpc CreateAccount(CreateAccountRequest) returns (commons.AccountsInstance);
   rpc GetAccounts(GetAccountsRequest) returns (GetAccountsResponse);
   rpc GetAccount(GetAccountRequest) returns (commons.AccountsInstance);
   rpc ActivateAccount(GetAccountRequest) returns (commons.AccountsInstance);
   rpc DeactivateAccount(GetAccountRequest) returns (commons.AccountsInstance);
+  rpc GetBitsoAccounts(google.protobuf.Empty) returns (BitsoBankAccountsResponse);
+  rpc GetBistoAccount(BitsoBankAccountRequest) returns (commons.BitsoBankAccountInstance);
 }
