@@ -53,6 +53,11 @@ message BitsoBankAccountRequest {
   string id = 1;
 }
 
+message FetchAndCreateBitsoBankAccountRequest {
+  string id = 1;
+  string userId = 2;
+}
+
 service AccountService {
   rpc CreateAccount(CreateAccountRequest) returns (commons.AccountsInstance);
   rpc GetAccounts(GetAccountsRequest) returns (GetAccountsResponse);
@@ -61,4 +66,5 @@ service AccountService {
   rpc DeactivateAccount(GetAccountRequest) returns (commons.AccountsInstance);
   rpc GetBitsoAccounts(google.protobuf.Empty) returns (BitsoBankAccountsResponse);
   rpc GetBistoAccount(BitsoBankAccountRequest) returns (commons.BitsoBankAccountInstance);
+  rpc FetchAndCreateBitsoAccount(FetchAndCreateBitsoBankAccountRequest) returns (commons.BitsoBankAccountInstance);
 }
