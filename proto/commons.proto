@@ -126,21 +126,61 @@ message BitsoBankAccountInstance {
   string accountOwnerName = 4;
 }
 
-message BitsoWireWithdrawalIntance {
-  message Details {
-    string origin_id = 1;
+message WithdrawalIntance {
+  message User {
+    string id = 1;
+    string username = 2;
+    string email = 3;
+    repeated string roles = 4;
+  }
+
+  message BitsoRequest {
+    string amount = 1;
+    string asset = 2;
+    string currency = 3;
+    string externalAccountId = 4;
+    string method = 5;
+    string network = 6;
+    string originId = 7;
+    string protocol = 8;
+    optional string wireMessage = 9;
+  }
+
+  message BitsoResponse {
+    message Details {
+      string origin_id = 1;
+    }
+    
+    string wid = 1;
+    string status = 2;
+    string created_at = 3;
+    string currency = 4;
+    string method = 5;
+    string method_name = 6;
+    string amount = 7;
+    string asset = 8;
+    string network = 9;
+    string protocol = 10;
+    string integration = 11;
+    optional Details details = 12;
+  }
+
+  message ReceivingAccount {
+    string id = 1;
+    string userId = 2;
+    string bitsoAccountId = 3;
+    string bankName = 4;
+    string last4 = 5;
+    string accountOwnerName = 6;
   }
   
-  string wid = 1;
-  string status = 2;
-  string created_at = 3;
-  string currency = 4;
-  string method = 5;
-  string method_name = 6;
-  string amount = 7;
-  string asset = 8;
-  string network = 9;
-  string protocol = 10;
-  string integration = 11;
-  Details details = 12;
+  string bitsoId = 1;
+  User user = 2;
+  BitsoRequest bitsoRequest = 3;
+  BitsoResponse bitsoResponse = 4;
+  string status = 5;
+  ReceivingAccount receivingAccount = 6;
+  string currency = 7;
+  string method = 8;
+  string protocol = 9;
 }
