@@ -23,13 +23,11 @@ message GetBitsoWireWithdrawalRequest {
 }
 
 message GetBitsoWireWithdrawalsRequest {
-  optional string search = 1;
-  optional string userId = 2;
-  optional string bitsoId =  3;
-  optional string beneficiaryName = 4;
-  optional string status = 5;
-  optional int32 limit = 6;
-  optional int32 skip = 7;
+  optional string userId = 1;
+  optional string bitsoId = 2;
+  optional string status = 3;
+  optional int32 limit = 4;
+  optional int32 skip = 5;
 }
 
 message GetBitsoWireWithdrawalsResponse {
