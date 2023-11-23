@@ -19,16 +19,39 @@ message CreateBitsoWireWithdrawalRequest {
 }
 
 message GetBitsoWireWithdrawalRequest {
-  string wid = 1;
+  string id = 1;
+}
+
+message GetBitsoWireWithdrawalsRequest {
+  optional string search = 1;
+  optional string userId = 2;
+  optional string bitsoId =  3;
+  optional string beneficiaryName = 4;
+  optional string status = 5;
+  optional int32 limit = 6;
+  optional int32 skip = 7;
 }
 
 message GetBitsoWireWithdrawalsResponse {
+  repeated commons.WithdrawalIntance data = 1;
+  int32 count = 2;
+  int32 skip = 3;
+  int32 limit = 4;
+}
+
+message FetchBitsoWireWithdrawalRequest {
+  string id = 1;
+}
+
+message FetchBitsoWireWithdrawalsResponse {
   repeated commons.WithdrawalIntance data = 1;
 }
 
 service PaymentsService {
   rpc CreateBitsoWireWithdrawal(CreateBitsoWireWithdrawalRequest) returns (commons.WithdrawalIntance) {}
-  rpc GetBitsoWireWithdrawals(google.protobuf.Empty) returns (GetBitsoWireWithdrawalsResponse) {}
+  rpc GetBitsoWireWithdrawals(GetBitsoWireWithdrawalsRequest) returns (GetBitsoWireWithdrawalsResponse) {}
   rpc GetBitsoWireWithdrawal(GetBitsoWireWithdrawalRequest) returns (commons.WithdrawalIntance) {}
+  rpc FetchBitsoWireWithdrawal(FetchBitsoWireWithdrawalRequest) returns (commons.WithdrawalIntance) {}
+  rpc FetchBitsoWireWithdrawals(google.protobuf.Empty) returns (FetchBitsoWireWithdrawalsResponse) {}
 }
 
