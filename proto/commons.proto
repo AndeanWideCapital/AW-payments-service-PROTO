@@ -125,3 +125,22 @@ message BitsoBankAccountInstance {
   string last4 = 3;
   string accountOwnerName = 4;
 }
+
+message BitsoWireWithdrawalIntance {
+  message Details {
+    string origin_id = 1;
+  }
+  
+  string wid = 1;
+  string status = 2;
+  string created_at = 3;
+  string currency = 4;
+  string method = 5;
+  string method_name = 6;
+  string amount = 7;
+  string asset = 8;
+  string network = 9;
+  string protocol = 10;
+  string integration = 11;
+  Details details = 12;
+}

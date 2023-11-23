@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package payments;
+
+import "commons.proto";
+import "google/protobuf/empty.proto";
+
+message CreateBitsoWireWithdrawalRequest {
+  int32 amount = 1;
+  string asset = 2;
+  string currency = 3;
+  string externalAccountId = 4;
+  string originId = 5;
+  optional string wireMessage = 6;
+  optional string method = 7;   // Optional, defaults to bridge
+  optional string network = 8;  // Optional, defaults to bridge
+  optional string protocol = 9; // Optional, defaults to wire
+}
+
+message GetBitsoWireWithdrawalRequest {
+  string wid = 1;
+}
+
+message GetBitsoWireWithdrawalsResponse {
+  repeated commons.BitsoWireWithdrawalIntance data = 1;
+}
+
+service PaymentsService {
+  rpc CreateBitsoWireWithdrawal(CreateBitsoWireWithdrawalRequest) returns (commons.BitsoWireWithdrawalIntance) {}
+  rpc GetBitsoWireWithdrawals(google.protobuf.Empty) returns (GetBitsoWireWithdrawalsResponse) {}
+  rpc GetBitsoWireWithdrawal(GetBitsoWireWithdrawalRequest) returns (commons.BitsoWireWithdrawalIntance) {}
+}
+
