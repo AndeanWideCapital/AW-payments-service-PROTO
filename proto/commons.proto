@@ -174,13 +174,14 @@ message WithdrawalIntance {
     optional string accountOwnerName = 6;
   }
   
-  string bitsoId = 1;
-  optional User user = 2;
-  optional BitsoRequest bitsoRequest = 3;
-  optional BitsoResponse bitsoResponse = 4;
-  optional string status = 5;
-  optional ReceivingAccount receivingAccount = 6;
-  optional string currency = 7;
-  optional string method = 8;
-  optional string protocol = 9;
+  string id = 1;
+  string bitsoId = 2;
+  optional User user = 3;
+  optional BitsoRequest bitsoRequest = 4;
+  optional BitsoResponse bitsoResponse = 5;
+  optional string status = 6;
+  optional ReceivingAccount receivingAccount = 7;
+  optional string currency = 8;
+  optional string method = 9;
+  optional string protocol = 10;
 }
