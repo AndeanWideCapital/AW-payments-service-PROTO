@@ -148,39 +148,39 @@ message WithdrawalIntance {
 
   message BitsoResponse {
     message Details {
-      string origin_id = 1;
+      optional string origin_id = 1;
     }
     
-    string wid = 1;
-    string status = 2;
-    string created_at = 3;
-    string currency = 4;
-    string method = 5;
-    string method_name = 6;
-    string amount = 7;
-    string asset = 8;
-    string network = 9;
-    string protocol = 10;
-    string integration = 11;
+    optional string wid = 1;
+    optional string status = 2;
+    optional string created_at = 3;
+    optional string currency = 4;
+    optional string method = 5;
+    optional string method_name = 6;
+    optional string amount = 7;
+    optional string asset = 8;
+    optional string network = 9;
+    optional string protocol = 10;
+    optional string integration = 11;
     optional Details details = 12;
   }
 
   message ReceivingAccount {
     string id = 1;
-    string userId = 2;
-    string bitsoAccountId = 3;
-    string bankName = 4;
-    string last4 = 5;
-    string accountOwnerName = 6;
+    optional string userId = 2;
+    optional string bitsoAccountId = 3;
+    optional string bankName = 4;
+    optional string last4 = 5;
+    optional string accountOwnerName = 6;
   }
   
   string bitsoId = 1;
-  User user = 2;
-  BitsoRequest bitsoRequest = 3;
-  BitsoResponse bitsoResponse = 4;
-  string status = 5;
-  ReceivingAccount receivingAccount = 6;
-  string currency = 7;
-  string method = 8;
-  string protocol = 9;
+  optional User user = 2;
+  optional BitsoRequest bitsoRequest = 3;
+  optional BitsoResponse bitsoResponse = 4;
+  optional string status = 5;
+  optional ReceivingAccount receivingAccount = 6;
+  optional string currency = 7;
+  optional string method = 8;
+  optional string protocol = 9;
 }
