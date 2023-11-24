@@ -20,6 +20,7 @@ message CreateBitsoWireWithdrawalRequest {
 
 message GetBitsoWireWithdrawalRequest {
   string id = 1;
+  optional string userId = 2;
 }
 
 message GetBitsoWireWithdrawalsRequest {
