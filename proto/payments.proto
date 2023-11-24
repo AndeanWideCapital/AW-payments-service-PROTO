@@ -11,11 +11,10 @@ message CreateBitsoWireWithdrawalRequest {
   string asset = 3;
   string currency = 4;
   string externalAccountId = 5;
-  string originId = 6;
-  optional string wireMessage = 7;
-  optional string method = 8;   // Optional, defaults to bridge
-  optional string network = 9;  // Optional, defaults to bridge
-  optional string protocol = 10; // Optional, defaults to wire
+  optional string wireMessage = 6;
+  optional string method = 7;   // Optional, defaults to bridge
+  optional string network = 8;  // Optional, defaults to bridge
+  optional string protocol = 9; // Optional, defaults to wire
 }
 
 message GetBitsoWireWithdrawalRequest {
