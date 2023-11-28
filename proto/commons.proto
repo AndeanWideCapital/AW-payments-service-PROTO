@@ -184,4 +184,9 @@ message WithdrawalIntance {
   optional string currency = 8;
   optional string method = 9;
   optional string protocol = 10;
+  optional string amount = 11;
+  optional string feeAmount = 12;
+  optional string total = 13;
+  optional string createdAt = 14;
+  optional string updatedAt = 15;
 }
