@@ -46,8 +46,13 @@ message FetchBitsoWireWithdrawalsResponse {
 }
 
 message GetBitsoWireFeesResponse {
-  int32 fixed = 1;
-  double percent = 2;
+  message Fee {
+    string currency = 1;
+    int32 fixed = 2;
+    double variable = 3;
+  }
+
+  repeated Fee fees = 1;
 }
 
 service PaymentsService {
