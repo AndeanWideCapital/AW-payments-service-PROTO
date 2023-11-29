@@ -45,11 +45,17 @@ message FetchBitsoWireWithdrawalsResponse {
   repeated commons.WithdrawalIntance data = 1;
 }
 
+message GetBitsoWireFeesResponse {
+  int32 fixed = 1;
+  double percent = 2;
+}
+
 service PaymentsService {
   rpc CreateBitsoWireWithdrawal(CreateBitsoWireWithdrawalRequest) returns (commons.WithdrawalIntance) {}
   rpc GetBitsoWireWithdrawals(GetBitsoWireWithdrawalsRequest) returns (GetBitsoWireWithdrawalsResponse) {}
   rpc GetBitsoWireWithdrawal(GetBitsoWireWithdrawalRequest) returns (commons.WithdrawalIntance) {}
   rpc FetchBitsoWireWithdrawal(FetchBitsoWireWithdrawalRequest) returns (commons.WithdrawalIntance) {}
   rpc FetchBitsoWireWithdrawals(google.protobuf.Empty) returns (FetchBitsoWireWithdrawalsResponse) {}
+  rpc GetBitsoWireFees(google.protobuf.Empty) returns (GetBitsoWireFeesResponse) {}
 }
 
