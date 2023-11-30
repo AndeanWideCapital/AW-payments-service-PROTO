@@ -143,12 +143,13 @@ message WithdrawalIntance {
     string network = 6;
     string originId = 7;
     string protocol = 8;
-    optional string wireMessage = 9;
+    string onBehalfOfCustomerId = 9;
+    optional string wireMessage = 10;
   }
 
   message BitsoResponse {
     message Details {
-      optional string origin_id = 1;
+      optional string originId = 1;
     }
     
     optional string wid = 1;
@@ -175,18 +176,19 @@ message WithdrawalIntance {
   }
   
   optional string id = 1;
-  string bitsoId = 2;
-  optional User user = 3;
-  optional BitsoRequest bitsoRequest = 4;
-  optional BitsoResponse bitsoResponse = 5;
-  optional string status = 6;
-  optional ReceivingAccount receivingAccount = 7;
-  optional string currency = 8;
-  optional string method = 9;
-  optional string protocol = 10;
-  optional string amount = 11;
-  optional string fee = 12;
-  optional string total = 13;
-  optional string createdAt = 14;
-  optional string updatedAt = 15;
+  int32 sequentialId = 2;
+  string bitsoId = 3;
+  optional User user = 4;
+  optional BitsoRequest bitsoRequest = 5;
+  optional BitsoResponse bitsoResponse = 6;
+  optional string status = 7;
+  optional ReceivingAccount receivingAccount = 8;
+  optional string currency = 9;
+  optional string method = 10;
+  optional string protocol = 11;
+  optional string amount = 12;
+  optional string fee = 13;
+  optional string total = 14;
+  optional string createdAt = 15;
+  optional string updatedAt = 16;
 }
