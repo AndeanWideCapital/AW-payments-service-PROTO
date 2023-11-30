@@ -74,6 +74,27 @@ message GetBalanceByTokenRequest {
   string token = 3;
 }
 
+message TransferRequest {
+  string from = 1;
+  string to = 2;
+  string amount = 3;
+  string token = 4;
+  string networkType = 5;
+}
+
+message TransferResponse {
+  string txHash = 1;
+}
+
+message getTransfersRequest {
+  optional string userId = 1;
+  optional string networkType = 2;
+}
+
+message getTransferRequest {
+  string txHash = 1;
+}
+
 
 service WalletsService {
   rpc CreateWallet(CreateWalletRequest) returns (commons.WalletInstance);
@@ -84,4 +105,5 @@ service WalletsService {
   rpc GetBalanceByUser(GetBalanceByUserRequest) returns (BalanceResponse);
   rpc GetBalancesByNetwork(GetBalanceByNetworkRequest) returns (BalanceResponse);
   rpc GetBalanceByToken(GetBalanceByTokenRequest) returns (commons.BalanceInstance);
+  rpc Transfer(TransferRequest) returns (TransferResponse);
 }
