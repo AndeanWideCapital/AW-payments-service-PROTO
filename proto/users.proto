@@ -75,6 +75,14 @@ message RevokeRefreshTokenRequest {
   string id = 1;
 }
 
+message UserIsActiveRequest {
+  string id = 1;
+}
+
+message UserIsActiveResponse {
+  bool isActive = 1;
+}
+
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (commons.UserInstance);
@@ -88,4 +96,5 @@ service UserService {
   rpc RevokeRefreshToken(RevokeRefreshTokenRequest) returns (commons.UserInstance);
   rpc GetInternalUserMessage(GetUserRequest) returns (InternalUserInstance);
   rpc SeedAdminUser(google.protobuf.Empty) returns (commons.UserInstance);
+  rpc UserIsActive(UserIsActiveRequest) returns (UserIsActiveResponse);
 }
