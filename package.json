@@ -1,12 +1,42 @@
 {
-  "name": "aw-payments-service-proto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Protobuf files and types for payments services",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndeanWideCapital/AW-payments-service-PROTO"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist && mkdirp dist/types && mkdirp dist/proto",
+    "copy": "ncp src/proto dist/proto",
+    "build": "npm run clean && npm run copy && npm run proto:all",
+    "proto:all": "npm run proto:auth && npm run proto:commons && npm run proto:networks && npm run proto:payments && npm run proto:users && npm run proto:wallets && npm run proto:accounts && npm run proto:mnemonic",
+    "proto:accounts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/accounts.proto --ts_proto_opt=nestJs=true",
+    "proto:auth": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/auth.proto --ts_proto_opt=nestJs=true",
+    "proto:commons": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/commons.proto --ts_proto_opt=nestJs=true",
+    "proto:mnemonic": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/mnemonic.proto --ts_proto_opt=nestJs=true",
+    "proto:networks": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/networks.proto --ts_proto_opt=nestJs=true",
+    "proto:payments": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/payments.proto --ts_proto_opt=nestJs=true",
+    "proto:users": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/users.proto --ts_proto_opt=nestJs=true",
+    "proto:wallets": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/wallets.proto --ts_proto_opt=nestJs=true"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mkdirp": "^3.0.1",
+    "ncp": "^2.0.0",
+    "rimraf": "^5.0.5",
+    "ts-proto": "^1.165.0"
+  },
+  "dependencies": {
+    "@nestjs/microservices": "^10.2.10",
+    "rxjs": "^7.8.1"
+  }
 }
