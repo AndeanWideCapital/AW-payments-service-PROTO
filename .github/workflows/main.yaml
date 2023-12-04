@@ -8,18 +8,6 @@ on:
     branches:
       - master
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18.x"
-      - name: Install Dependencies
-        run: npm install
-
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
