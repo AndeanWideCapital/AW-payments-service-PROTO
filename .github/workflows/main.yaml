@@ -11,6 +11,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Protobuf Compiler
+        run: sudo apt install protobuf-compiler
+
       - name: Checkout
         uses: actions/checkout@v3
         with:

@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "@nestjs/microservices": "^10.2.10",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "rxjs": "^7.8.1",
     "ts-proto": "^1.165.0"
   }
