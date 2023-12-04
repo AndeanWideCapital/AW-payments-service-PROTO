@@ -16,7 +16,7 @@
     "clean": "rimraf dist && mkdirp dist/types && mkdirp dist/proto",
     "copy": "ncp src/proto dist/proto",
     "build": "npm run clean && npm run copy && npm run proto:all",
-    "proto:all": "npm run proto:auth && npm run proto:commons && npm run proto:networks && npm run proto:payments && npm run proto:users && npm run proto:wallets && npm run proto:accounts && npm run proto:mnemonic",
+    "proto:all": "npm run proto:accounts && npm run proto:auth && npm run proto:commons && npm run proto:networks && npm run proto:payments && npm run proto:users && npm run proto:wallets && npm run proto:mnemonic",
     "proto:accounts": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/accounts.proto --ts_proto_opt=nestJs=true",
     "proto:auth": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/auth.proto --ts_proto_opt=nestJs=true",
     "proto:commons": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto -I=./src/proto --ts_proto_out=./dist/types/ ./src/proto/commons.proto --ts_proto_opt=nestJs=true",
