@@ -14,6 +14,12 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "private": false,
   "scripts": {
     "clean": "rimraf dist && mkdirp dist/types && mkdirp dist/proto && mkdirp src/types",
