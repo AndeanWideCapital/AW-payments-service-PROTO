@@ -95,7 +95,6 @@ message getTransferRequest {
   string txHash = 1;
 }
 
-
 service WalletsService {
   rpc CreateWallet(CreateWalletRequest) returns (commons.WalletInstance);
   rpc GetWallet(GetWalletRequest) returns (GetWalletResponse);

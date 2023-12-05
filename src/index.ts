@@ -6,6 +6,7 @@ export * from "./types/networks";
 export * from "./types/payments";
 export * from "./types/users";
 export * from "./types/wallets";
+export * from "./types/contracts";
 
 export const ACCOUNTS_PACKAGE_NAME = "accounts";
 export const AUTHENTICATION_PACKAGE_NAME = "authentication";
@@ -15,3 +16,4 @@ export const NETWORKS_PACKAGE_NAME = "networks";
 export const PAYMENTS_PACKAGE_NAME = "payments";
 export const USERS_PACKAGE_NAME = "users";
 export const WALLET_PACKAGE_NAME = "wallet";
+export const CONTRACTS_PACKAGE_NAME = "contracts";

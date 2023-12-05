@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package contracts;
+
+message GetDecimalRequest {
+  string token = 1;
+}
+
+message GetDecimalResponse {
+  uint32 decimals = 1;
+}
+
+message GetTotalSupplyRequest {
+  string token = 1;
+}
+
+message GetTotalSupplyResponse {
+  uint32 totalSupply = 1;
+}
+
+message GetBalanceRequest {
+  string token = 1;
+  string address = 2;
+}
+
+message GetBalanceResponse {
+  uint32 balance = 1;
+}
+
+message SendTransferRequest {
+  string token = 1;
+  string from = 2;
+  string to = 3;
+  uint32 amount = 4;
+}
+
+
+message SendTransferResponse {
+  string txHash = 1;
+}
+
+service ContractService {
+  rpc GetDecimal(GetDecimalRequest) returns (GetDecimalResponse);
+  rpc GetTotalSupply(GetTotalSupplyRequest) returns (GetTotalSupplyResponse);
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
+  rpc SendTransfer(SendTransferRequest) returns (SendTransferResponse);
+}
