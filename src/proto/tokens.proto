@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package tokens;
+
+message GetTokenDecimalsRequest {
+  string symbol = 1;
+}
+
+message GetTokenDecimalsResponse {
+  uint32 decimals = 1;
+}
+
+message GetTokenBalanceRequest {
+  string symbol = 1;
+  string address = 2;
+}
+
+message GetTokenBalanceResponse {
+  uint64 balance = 1;
+}
+
+message SendTokenTransferRequest {
+  string symbol = 1;
+  string from = 2;
+  string to = 3;
+  uint64 amount = 4;
+}
+
+message SendTokenTransferResponse {
+  string txid = 1;
+}
+
+service TokensService {
+  rpc GetTokenDecimals(GetTokenDecimalsRequest) returns (GetTokenDecimalsResponse);
+  rpc GetTokenBalance(GetTokenBalanceRequest) returns (GetTokenBalanceResponse);
+  rpc SendTokenTransfer(SendTokenTransferRequest) returns (SendTokenTransferResponse);
+}

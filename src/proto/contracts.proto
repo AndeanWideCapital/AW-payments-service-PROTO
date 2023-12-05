@@ -2,46 +2,46 @@ syntax = "proto3";
 
 package contracts;
 
-message GetDecimalRequest {
+message GetContractDecimalRequest {
   string token = 1;
 }
 
-message GetDecimalResponse {
+message GetContractDecimalResponse {
   uint32 decimals = 1;
 }
 
-message GetTotalSupplyRequest {
+message GetContractTotalSupplyRequest {
   string token = 1;
 }
 
-message GetTotalSupplyResponse {
-  uint32 totalSupply = 1;
+message GetContractTotalSupplyResponse {
+  uint64 totalSupply = 1;
 }
 
-message GetBalanceRequest {
+message GetContractBalanceRequest {
   string token = 1;
   string address = 2;
 }
 
-message GetBalanceResponse {
-  uint32 balance = 1;
+message GetContractBalanceResponse {
+  uint64 balance = 1;
 }
 
-message SendTransferRequest {
+message SendContractContractTransferRequest {
   string token = 1;
   string from = 2;
   string to = 3;
-  uint32 amount = 4;
+  uint64 amount = 4;
 }
 
 
-message SendTransferResponse {
+message SendContractTransferResponse {
   string txHash = 1;
 }
 
 service ContractService {
-  rpc GetDecimal(GetDecimalRequest) returns (GetDecimalResponse);
-  rpc GetTotalSupply(GetTotalSupplyRequest) returns (GetTotalSupplyResponse);
-  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
-  rpc SendTransfer(SendTransferRequest) returns (SendTransferResponse);
+  rpc GetContractDecimal(GetContractDecimalRequest) returns (GetContractDecimalResponse);
+  rpc GetContractTotalSupply(GetContractTotalSupplyRequest) returns (GetContractTotalSupplyResponse);
+  rpc GetContractBalance(GetContractBalanceRequest) returns (GetContractBalanceResponse);
+  rpc SendContractTransfer(SendContractContractTransferRequest) returns (SendContractTransferResponse);
 }

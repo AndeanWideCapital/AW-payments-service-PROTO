@@ -2,73 +2,81 @@
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
-export interface GetDecimalRequest {
+export interface GetContractDecimalRequest {
   token: string;
 }
 
-export interface GetDecimalResponse {
+export interface GetContractDecimalResponse {
   decimals: number;
 }
 
-export interface GetTotalSupplyRequest {
+export interface GetContractTotalSupplyRequest {
   token: string;
 }
 
-export interface GetTotalSupplyResponse {
+export interface GetContractTotalSupplyResponse {
   totalSupply: number;
 }
 
-export interface GetBalanceRequest {
+export interface GetContractBalanceRequest {
   token: string;
   address: string;
 }
 
-export interface GetBalanceResponse {
+export interface GetContractBalanceResponse {
   balance: number;
 }
 
-export interface SendTransferRequest {
+export interface SendContractContractTransferRequest {
   token: string;
   from: string;
   to: string;
   amount: number;
 }
 
-export interface SendTransferResponse {
+export interface SendContractTransferResponse {
   txHash: string;
 }
 
 export interface ContractServiceClient {
-  getDecimal(request: GetDecimalRequest): Observable<GetDecimalResponse>;
+  getContractDecimal(request: GetContractDecimalRequest): Observable<GetContractDecimalResponse>;
 
-  getTotalSupply(request: GetTotalSupplyRequest): Observable<GetTotalSupplyResponse>;
+  getContractTotalSupply(request: GetContractTotalSupplyRequest): Observable<GetContractTotalSupplyResponse>;
 
-  getBalance(request: GetBalanceRequest): Observable<GetBalanceResponse>;
+  getContractBalance(request: GetContractBalanceRequest): Observable<GetContractBalanceResponse>;
 
-  sendTransfer(request: SendTransferRequest): Observable<SendTransferResponse>;
+  sendContractTransfer(request: SendContractContractTransferRequest): Observable<SendContractTransferResponse>;
 }
 
 export interface ContractServiceController {
-  getDecimal(
-    request: GetDecimalRequest,
-  ): Promise<GetDecimalResponse> | Observable<GetDecimalResponse> | GetDecimalResponse;
+  getContractDecimal(
+    request: GetContractDecimalRequest,
+  ): Promise<GetContractDecimalResponse> | Observable<GetContractDecimalResponse> | GetContractDecimalResponse;
 
-  getTotalSupply(
-    request: GetTotalSupplyRequest,
-  ): Promise<GetTotalSupplyResponse> | Observable<GetTotalSupplyResponse> | GetTotalSupplyResponse;
+  getContractTotalSupply(
+    request: GetContractTotalSupplyRequest,
+  ):
+    | Promise<GetContractTotalSupplyResponse>
+    | Observable<GetContractTotalSupplyResponse>
+    | GetContractTotalSupplyResponse;
 
-  getBalance(
-    request: GetBalanceRequest,
-  ): Promise<GetBalanceResponse> | Observable<GetBalanceResponse> | GetBalanceResponse;
+  getContractBalance(
+    request: GetContractBalanceRequest,
+  ): Promise<GetContractBalanceResponse> | Observable<GetContractBalanceResponse> | GetContractBalanceResponse;
 
-  sendTransfer(
-    request: SendTransferRequest,
-  ): Promise<SendTransferResponse> | Observable<SendTransferResponse> | SendTransferResponse;
+  sendContractTransfer(
+    request: SendContractContractTransferRequest,
+  ): Promise<SendContractTransferResponse> | Observable<SendContractTransferResponse> | SendContractTransferResponse;
 }
 
 export function ContractServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["getDecimal", "getTotalSupply", "getBalance", "sendTransfer"];
+    const grpcMethods: string[] = [
+      "getContractDecimal",
+      "getContractTotalSupply",
+      "getContractBalance",
+      "sendContractTransfer",
+    ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("ContractService", method)(constructor.prototype[method], method, descriptor);
