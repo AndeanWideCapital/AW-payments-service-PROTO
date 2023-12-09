@@ -24,13 +24,21 @@ message NetworkAssetInstance {
       string type = 2;
     }
   
-    message Entry {
-      string type = 1;
-      string name = 2; // Solo para Eventos y Funciones
-      repeated Input inputs = 3;
-      repeated Output outputs = 4; // Solo para Funciones
-      string stateMutability = 5; // Solo para Constructor y Funciones
+    message EventInput {
+      bool indexed = 1;
+      string name = 2;
+      string type = 3;
     }
+    
+    bool constant = 1;
+    string name = 2;
+    repeated Input inputs = 3;
+    repeated Output outputs = 4;
+    string stateMutability = 5;
+    optional bool payable = 6;
+    string type = 7;
+    repeated EventInput eventInputs = 8;
+    optional bool anonymous = 9;
   }
 
   string name = 1;
