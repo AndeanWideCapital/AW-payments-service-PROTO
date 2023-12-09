@@ -31,18 +31,12 @@ message NetworkAssetInstance {
       repeated Output outputs = 4; // Solo para Funciones
       string stateMutability = 5; // Solo para Constructor y Funciones
     }
-  
-    repeated Entry entrys = 1;
   }
 
-  string fullname = 1;
-  string name = 2;
-  optional string originAddress = 3;
-  optional int64 originEnergyLimit = 4;
-  string contractAddress = 5;
-  optional string codeHash = 6;
-  optional string base58Address = 7;
-  optional ABIInstance abi = 8;
+  string name = 1;
+  string symbol = 2;
+  string contractAddress = 3;
+  repeated ABIInstance abi = 4;
 }
 
 message MnemonicPhraseInstance {
