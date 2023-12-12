@@ -78,9 +78,10 @@ message UserInstance {
   repeated string roles = 4;
   bool isActive = 5;
   repeated commons.WalletInstance wallets = 6;
-  string emailVerifiedAt = 7;
+  optional string emailVerifiedAt = 7;
   string createdAt = 8;
   string updatedAt = 9;
+  string passwordRecoveryToken = 10;
 }
 
 message GeneralMessageResponse {
