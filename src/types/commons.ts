@@ -1,5 +1,4 @@
 /* eslint-disable */
-import { Timestamp } from "./google/protobuf/timestamp";
 
 export interface NetworkInstance {
   id: string;
@@ -79,7 +78,7 @@ export interface UserInstance {
   roles: string[];
   isActive: boolean;
   wallets: WalletInstance[];
-  emailVerifiedAt: Timestamp | undefined;
+  emailVerifiedAt?: string | undefined;
   createdAt: string;
   updatedAt: string;
   passwordRecoveryToken: string;

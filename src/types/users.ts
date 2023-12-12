@@ -82,6 +82,15 @@ export interface UserIsActiveResponse {
   isActive: boolean;
 }
 
+export interface UpdateUserRequest {
+  id: string;
+  username?: string | undefined;
+  email?: string | undefined;
+  password?: string | undefined;
+  emailVerifiedAt?: string | undefined;
+  passwordRecoveryToken?: string | undefined;
+}
+
 export interface UserServiceClient {
   getUsers(request: UsersQuery): Observable<UserList>;
 
@@ -109,7 +118,7 @@ export interface UserServiceClient {
 
   userIsActive(request: UserIsActiveRequest): Observable<UserIsActiveResponse>;
 
-  updateUser(request: UserInstance): Observable<UserInstance>;
+  updateUser(request: UpdateUserRequest): Observable<UserInstance>;
 }
 
 export interface UserServiceController {
@@ -149,7 +158,7 @@ export interface UserServiceController {
     request: UserIsActiveRequest,
   ): Promise<UserIsActiveResponse> | Observable<UserIsActiveResponse> | UserIsActiveResponse;
 
-  updateUser(request: UserInstance): Promise<UserInstance> | Observable<UserInstance> | UserInstance;
+  updateUser(request: UpdateUserRequest): Promise<UserInstance> | Observable<UserInstance> | UserInstance;
 }
 
 export function UserServiceControllerMethods() {

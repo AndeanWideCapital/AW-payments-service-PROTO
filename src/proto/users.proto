@@ -32,6 +32,8 @@ message InternalUserInstance {
   string updatedAt = 14;
 }
 
+
+
 message UserList {
   repeated commons.UserInstance data = 1;
   int32 count = 2;
@@ -83,6 +85,15 @@ message UserIsActiveResponse {
   bool isActive = 1;
 }
 
+message UpdateUserRequest {
+  string id = 1;
+  optional string username = 2;
+  optional string email = 3;
+  optional string password = 4;
+  optional string emailVerifiedAt = 5;
+  optional string passwordRecoveryToken = 6;
+}
+
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (commons.UserInstance);
@@ -97,5 +108,5 @@ service UserService {
   rpc GetInternalUserMessage(GetUserRequest) returns (InternalUserInstance);
   rpc SeedAdminUser(google.protobuf.Empty) returns (commons.UserInstance);
   rpc UserIsActive(UserIsActiveRequest) returns (UserIsActiveResponse);
-  rpc UpdateUser (commons.UserInstance) returns (commons.UserInstance);
+  rpc UpdateUser (UpdateUserRequest) returns (commons.UserInstance);
 }
