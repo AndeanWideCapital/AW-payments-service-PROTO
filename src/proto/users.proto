@@ -97,4 +97,5 @@ service UserService {
   rpc GetInternalUserMessage(GetUserRequest) returns (InternalUserInstance);
   rpc SeedAdminUser(google.protobuf.Empty) returns (commons.UserInstance);
   rpc UserIsActive(UserIsActiveRequest) returns (UserIsActiveResponse);
+  rpc UpdateUser (commons.UserInstance) returns (commons.UserInstance);
 }

@@ -8,8 +8,6 @@
  *     service Foo {
  *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
  *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
  */
 export interface Empty {
 }

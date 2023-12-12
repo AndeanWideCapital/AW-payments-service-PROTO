@@ -108,6 +108,8 @@ export interface UserServiceClient {
   seedAdminUser(request: Empty): Observable<UserInstance>;
 
   userIsActive(request: UserIsActiveRequest): Observable<UserIsActiveResponse>;
+
+  updateUser(request: UserInstance): Observable<UserInstance>;
 }
 
 export interface UserServiceController {
@@ -146,6 +148,8 @@ export interface UserServiceController {
   userIsActive(
     request: UserIsActiveRequest,
   ): Promise<UserIsActiveResponse> | Observable<UserIsActiveResponse> | UserIsActiveResponse;
+
+  updateUser(request: UserInstance): Promise<UserInstance> | Observable<UserInstance> | UserInstance;
 }
 
 export function UserServiceControllerMethods() {
@@ -164,6 +168,7 @@ export function UserServiceControllerMethods() {
       "getInternalUserMessage",
       "seedAdminUser",
       "userIsActive",
+      "updateUser",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);

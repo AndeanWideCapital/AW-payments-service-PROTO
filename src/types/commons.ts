@@ -10,18 +10,22 @@ export interface NetworkInstance {
 }
 
 export interface NetworkAssetInstance {
-  fullname: string;
   name: string;
-  originAddress?: string | undefined;
-  originEnergyLimit?: number | undefined;
+  symbol: string;
   contractAddress: string;
-  codeHash?: string | undefined;
-  base58Address?: string | undefined;
-  abi?: NetworkAssetInstance_ABIInstance | undefined;
+  abi: NetworkAssetInstance_ABIInstance[];
 }
 
 export interface NetworkAssetInstance_ABIInstance {
-  entrys: NetworkAssetInstance_ABIInstance_Entry[];
+  constant: boolean;
+  name: string;
+  inputs: NetworkAssetInstance_ABIInstance_Input[];
+  outputs: NetworkAssetInstance_ABIInstance_Output[];
+  stateMutability: string;
+  payable?: boolean | undefined;
+  type: string;
+  eventInputs: NetworkAssetInstance_ABIInstance_EventInput[];
+  anonymous?: boolean | undefined;
 }
 
 export interface NetworkAssetInstance_ABIInstance_Input {
@@ -37,15 +41,10 @@ export interface NetworkAssetInstance_ABIInstance_Output {
   type: string;
 }
 
-export interface NetworkAssetInstance_ABIInstance_Entry {
-  type: string;
-  /** Solo para Eventos y Funciones */
+export interface NetworkAssetInstance_ABIInstance_EventInput {
+  indexed: boolean;
   name: string;
-  inputs: NetworkAssetInstance_ABIInstance_Input[];
-  /** Solo para Funciones */
-  outputs: NetworkAssetInstance_ABIInstance_Output[];
-  /** Solo para Constructor y Funciones */
-  stateMutability: string;
+  type: string;
 }
 
 export interface MnemonicPhraseInstance {
@@ -79,6 +78,7 @@ export interface UserInstance {
   roles: string[];
   isActive: boolean;
   wallets: WalletInstance[];
+  emailVerifiedAt: string;
   createdAt: string;
   updatedAt: string;
 }
