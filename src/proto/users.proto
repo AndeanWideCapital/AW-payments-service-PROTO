@@ -32,8 +32,6 @@ message InternalUserInstance {
   string updatedAt = 14;
 }
 
-
-
 message UserList {
   repeated commons.UserInstance data = 1;
   int32 count = 2;
@@ -94,6 +92,24 @@ message UpdateUserRequest {
   optional string passwordRecoveryToken = 6;
 }
 
+message EmailAndPasswordRequest {
+  string email = 1;
+}
+
+message VerifyEmailRequest {
+  string token = 1;
+}
+
+message VerifyEmailAndRecoveryPassResponse {
+  string message = 1;
+  string redirectTo = 2;
+}
+
+message recoveryPasswordRequest {
+  string token = 1;
+  string password = 2;
+}
+
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (commons.UserInstance);
@@ -109,4 +125,8 @@ service UserService {
   rpc SeedAdminUser(google.protobuf.Empty) returns (commons.UserInstance);
   rpc UserIsActive(UserIsActiveRequest) returns (UserIsActiveResponse);
   rpc UpdateUser (UpdateUserRequest) returns (commons.UserInstance);
+  rpc requestEmailConfirmation (EmailAndPasswordRequest) returns (google.protobuf.Empty);
+  rpc verifyEmail (VerifyEmailRequest) returns (VerifyEmailAndRecoveryPassResponse);
+  rpc forgotPassword (EmailAndPasswordRequest) returns (google.protobuf.Empty);
+  rpc recoveryPassword (recoveryPasswordRequest) returns (VerifyEmailAndRecoveryPassResponse);
 }

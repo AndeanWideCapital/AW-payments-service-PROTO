@@ -83,12 +83,30 @@ export interface UserIsActiveResponse {
 }
 
 export interface UpdateUserRequest {
-  id: string;
+  id?: string | undefined;
   username?: string | undefined;
   email?: string | undefined;
   password?: string | undefined;
   emailVerifiedAt?: string | undefined;
   passwordRecoveryToken?: string | undefined;
+}
+
+export interface EmailAndPasswordRequest {
+  email: string;
+}
+
+export interface VerifyEmailRequest {
+  token: string;
+}
+
+export interface VerifyEmailAndRecoveryPassResponse {
+  message: string;
+  redirectTo: string;
+}
+
+export interface recoveryPasswordRequest {
+  token: string;
+  password: string;
 }
 
 export interface UserServiceClient {
@@ -119,6 +137,14 @@ export interface UserServiceClient {
   userIsActive(request: UserIsActiveRequest): Observable<UserIsActiveResponse>;
 
   updateUser(request: UpdateUserRequest): Observable<UserInstance>;
+
+  requestEmailConfirmation(request: EmailAndPasswordRequest): Observable<Empty>;
+
+  verifyEmail(request: VerifyEmailRequest): Observable<VerifyEmailAndRecoveryPassResponse>;
+
+  forgotPassword(request: EmailAndPasswordRequest): Observable<Empty>;
+
+  recoveryPassword(request: recoveryPasswordRequest): Observable<VerifyEmailAndRecoveryPassResponse>;
 }
 
 export interface UserServiceController {
@@ -159,6 +185,24 @@ export interface UserServiceController {
   ): Promise<UserIsActiveResponse> | Observable<UserIsActiveResponse> | UserIsActiveResponse;
 
   updateUser(request: UpdateUserRequest): Promise<UserInstance> | Observable<UserInstance> | UserInstance;
+
+  requestEmailConfirmation(request: EmailAndPasswordRequest): void;
+
+  verifyEmail(
+    request: VerifyEmailRequest,
+  ):
+    | Promise<VerifyEmailAndRecoveryPassResponse>
+    | Observable<VerifyEmailAndRecoveryPassResponse>
+    | VerifyEmailAndRecoveryPassResponse;
+
+  forgotPassword(request: EmailAndPasswordRequest): void;
+
+  recoveryPassword(
+    request: recoveryPasswordRequest,
+  ):
+    | Promise<VerifyEmailAndRecoveryPassResponse>
+    | Observable<VerifyEmailAndRecoveryPassResponse>
+    | VerifyEmailAndRecoveryPassResponse;
 }
 
 export function UserServiceControllerMethods() {
@@ -178,6 +222,10 @@ export function UserServiceControllerMethods() {
       "seedAdminUser",
       "userIsActive",
       "updateUser",
+      "requestEmailConfirmation",
+      "verifyEmail",
+      "forgotPassword",
+      "recoveryPassword",
     ];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
