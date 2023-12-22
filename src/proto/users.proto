@@ -110,6 +110,14 @@ message recoveryPasswordRequest {
   string password = 2;
 }
 
+message VerifyTokenPasswordRequest {
+  string token = 1;
+}
+
+message VerifyTokenPasswordResponse {
+  bool isValid = 1;
+}
+
 service UserService {
   rpc GetUsers(UsersQuery) returns (UserList);
   rpc CreateUser(CreateUserRequest) returns (commons.UserInstance);
@@ -129,4 +137,5 @@ service UserService {
   rpc verifyEmail (VerifyEmailRequest) returns (VerifyEmailAndRecoveryPassResponse);
   rpc forgotPassword (EmailAndPasswordRequest) returns (google.protobuf.Empty);
   rpc recoveryPassword (recoveryPasswordRequest) returns (VerifyEmailAndRecoveryPassResponse);
+  rpc VerifyTokenPassword (VerifyTokenPasswordRequest) returns (VerifyTokenPasswordResponse);
 }
